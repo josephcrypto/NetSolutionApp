@@ -8,31 +8,32 @@ import lombok.Setter;
 
 import java.sql.Date;
 
+@Entity
 @Getter
 @Setter
+@Table(name = "customer_db")
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "product_db")
-public class Product {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
-    private String item;
+    private String name;
 
-    private int quantity;
+    private String shopName;
 
-    private String model;
+    private String mobile;
 
-    private String categories;
+    private String address;
 
-    private double COD;
+    private Date installDate;
 
-    private Date date;
+    private String invoice;
 
-    private double amount;
+    private String service;
 
-    private double profit;
+    private String description;
+
 }

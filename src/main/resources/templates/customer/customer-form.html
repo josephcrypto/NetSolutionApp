@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Customers Form</title>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="#">Net_Solution App</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" th:href="@{/home}">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Product">
+                <a class="nav-link" th:href="@{/product/list}">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">Product</span>
+                </a>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customer">
+                <a class="nav-link" th:href="@{/customers/list}">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">Customer</span>
+                </a>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Report">
+                <a class="nav-link" th:href="@{#}">
+                    <i class="fa fa-fw fa-file"></i>
+                    <span class="nav-link-text">Daily Report</span>
+                </a>
+            </li>
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Table">
+                <a class="nav-link" th:href="@{#}">
+                    <i class="fa fa-fw fa-sitemap"></i>
+                    <span class="nav-link-text">Monthly Report</span>
+                </a>
+            </li>
+
+<!--            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">-->
+<!--                <a class="nav-link" href="#">-->
+<!--                    <i class="fa fa-fw fa-link"></i>-->
+<!--                    <span class="nav-link-text">Invoice</span>-->
+<!--                </a>-->
+<!--            </li>-->
+        </ul>
+
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+                <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Search">
+                        <span class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+                    </div>
+                </form>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Customer Form</li>
+        </ol>
+        <!--        #Customer Form Start-->
+        <div class="container-fluid">
+            <!--            <div class="text-center"><h2>Add Customer</h2></div>-->
+
+            <form th:action="@{/customers/save}" method="post" th:object="${customer}" style="max-width: 500px; margin: 0 auto;">
+                <input type="hidden" th:field="*{id}">
+                <div class="border border-secondary rounded p-3">
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{name}" class="form-control" required minlength="3" maxlength="50" placeholder="customerName" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Shop_Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{shopName}" class="form-control" maxlength="50" placeholder="Shop Name" autofocus required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">PhoneNo:</label>
+                        <div class="col-sm-8">
+                            <input type="number" th:field="*{mobile}" class="form-control" required minlength="9" maxlength="20" placeholder="PhoneNo" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Address:</label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{address}" class="form-control" placeholder="Address" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Install_Date</label>
+                        <div class="col-sm-8">
+                            <input type="date" th:field="*{installDate}" class="form-control" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Invoice</label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{invoice}" class="form-control" maxlength="30" placeholder="Invoice_Number" autofocus required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Service</label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{service}" class="form-control" maxlength="30" placeholder="Service" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Description</label>
+                        <div class="col-sm-8">
+                            <input type="text" th:field="*{description}" class="form-control" maxlength="50" placeholder="Description" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary m-2">Save</button>
+                        <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript">
+            function cancelForm(){
+                window.location ="[[@{/customers/list}]]"
+            }
+        </script>
+
+        <!--    #Customer Form End.-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Power By Bootstrap Copyright © Joseph Crypto 2022</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

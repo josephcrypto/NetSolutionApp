@@ -27,9 +27,9 @@ public class PdfGenerator {
         paragraph1.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(paragraph1);
 
-        PdfPTable table = new PdfPTable(10);
+        PdfPTable table = new PdfPTable(9);
         table.setWidthPercentage(100);
-        table.setWidths(new int[]{1,1,1,1,1,1,1,1,1,1});
+        table.setWidths(new int[]{1,1,1,1,1,1,1,1,1});
         table.setSpacingBefore(3);
 
         PdfPCell cell = new PdfPCell();
@@ -58,9 +58,6 @@ public class PdfGenerator {
         cell.setPhrase(new Phrase("COD", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Invoice_No", font));
-        table.addCell(cell);
-
         cell.setPhrase(new Phrase("Date", font));
         table.addCell(cell);
 
@@ -77,7 +74,6 @@ public class PdfGenerator {
             table.addCell(product.getModel());
             table.addCell(product.getCategories());
             table.addCell(String.valueOf(product.getCOD()));
-            table.addCell(product.getInvoiceNo());
             table.addCell(String.valueOf(product.getDate()));
             table.addCell(String.valueOf(product.getAmount()));
             table.addCell(String.valueOf(product.getProfit()));

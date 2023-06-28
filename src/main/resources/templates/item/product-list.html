@@ -92,12 +92,6 @@
                 </a>
             </li>
 
-<!--            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Product">-->
-<!--                <a class="nav-link" th:href="@{/employee/list}">-->
-<!--                    <i class="fa fa-fw fa-area-chart"></i>-->
-<!--                    <span class="nav-link-text">Employee</span>-->
-<!--                </a>-->
-<!--            </li>-->
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Order">
                 <a class="nav-link" th:href="@{/product/list}">
@@ -107,7 +101,7 @@
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customer">
-                <a class="nav-link" href="#">
+                <a class="nav-link" th:href="@{/customers/list}">
                     <i class="fa fa-fw fa-wrench"></i>
                     <span class="nav-link-text">Customers List</span>
                 </a>
@@ -127,12 +121,12 @@
                 </a>
             </li>
 
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                <a class="nav-link" th:action="@{/logout}">
-                    <i class="fa fa-fw fa-link"></i>
-                    <span class="nav-link-text">Logout</span>
-                </a>
-            </li>
+<!--            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">-->
+<!--                <a class="nav-link" th:action="@{/logout}">-->
+<!--                    <i class="fa fa-fw fa-link"></i>-->
+<!--                    <span class="nav-link-text">Logout</span>-->
+<!--                </a>-->
+<!--            </li>-->
         </ul>
 
         <ul class="navbar-nav sidenav-toggler">
@@ -197,12 +191,11 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Item</th>
+                        <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Model</th>
                         <th>Category</th>
                         <th>COD</th>
-                        <th>Invoice_No</th>
                         <th>Date</th>
                         <th>Amount</th>
                         <th>Profit</th>
@@ -218,7 +211,6 @@
                             <td th:text="${product.getModel()}">Model</td>
                             <td th:text="${product.getCategories()}">Category</td>
                             <td th:text="${product.getCOD()}">COD</td>
-                            <td th:text="${product.getInvoiceNo()}">Invoice_No</td>
                             <td th:text="${product.getDate()}">Date</td>
                             <td th:text="${product.getAmount()}">Amount</td>
                             <td th:text="${product.getProfit()}">Profit</td>
